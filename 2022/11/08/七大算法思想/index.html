@@ -1,0 +1,429 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>七大算法思想 | smile~</title><meta name="author" content="cjy"><meta name="copyright" content="cjy"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="算法思想是解决算法问题的核心 大部分的算法解析思路都来源于七种算法 递归介绍递归算法是一种直接或者间接调用自身函数或者方法的算法 递归算法的实质是把问题分解成规模缩小的同类问题的子问题 然后递归调用方法来表示问题的解。 用途主要用于解决：  数据的定义是按照递归定义的（斐波那契数列 f(n) &#x3D; f(n-1) + f(n-2)） 问题的解法按递归实现（回溯） 数据的结构形式按递归定义（树，图）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="七大算法思想">
+<meta property="og:url" content="https://www.chengjingyu.xyz/2022/11/08/%E4%B8%83%E5%A4%A7%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/index.html">
+<meta property="og:site_name" content="smile~">
+<meta property="og:description" content="算法思想是解决算法问题的核心 大部分的算法解析思路都来源于七种算法 递归介绍递归算法是一种直接或者间接调用自身函数或者方法的算法 递归算法的实质是把问题分解成规模缩小的同类问题的子问题 然后递归调用方法来表示问题的解。 用途主要用于解决：  数据的定义是按照递归定义的（斐波那契数列 f(n) &#x3D; f(n-1) + f(n-2)） 问题的解法按递归实现（回溯） 数据的结构形式按递归定义（树，图）">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.chengjingyu.xyz/pic.chengjingyu.xyz/img_win/default_cover_112.webp">
+<meta property="article:published_time" content="2022-11-07T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-11-23T08:34:13.994Z">
+<meta property="article:author" content="cjy">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.chengjingyu.xyz/pic.chengjingyu.xyz/img_win/default_cover_112.webp"><link rel="shortcut icon" href="/"><link rel="canonical" href="https://www.chengjingyu.xyz/2022/11/08/%E4%B8%83%E5%A4%A7%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":230},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '七大算法思想',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2022-11-23 16:34:13'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><script src="/js/SAO-Notify.js" async></script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" link="/css/loading_wizard.css"/><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="wizard-scene"><div class="wizard-objects"><div class="wizard-square"></div><div class="wizard-circle"></div><div class="wizard-triangle"></div></div><div class="wizard"><div class="wizard-body"></div><div class="wizard-right-arm"><div class="wizard-right-hand"></div></div><div class="wizard-left-arm"><div class="wizard-left-hand"></div></div><div class="wizard-head"><div class="wizard-beard"></div><div class="wizard-face"><div class="wizard-adds"></div></div><div class="wizard-hat"><div class="wizard-hat-of-the-hat"></div><div class="wizard-four-point-star --first"></div><div class="wizard-four-point-star --second"></div><div class="wizard-four-point-star --third"></div></div></div></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/%5Cassets%5Chead1.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">36</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><span> 休闲</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://pic.chengjingyu.xyz/MUSIC/music.html"><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><span> 照片</span></a></li><li><a class="site-page child" href="/dh/"><span> 动画</span></a></li></ul></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/hl/"><span> 画廊</span></a></li><li><a class="site-page child" href="/movies/"><span> 影院</span></a></li><li><a class="site-page child" href="/game/"><span> 游戏</span></a></li></ul></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/zs/"><span> 自述</span></a></li><li><a class="site-page child" href="/select/"><span> 内心</span></a></li><li><a class="site-page child" href="/random/"><span> 瞎逛</span></a></li></ul></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><span> 网站</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/daohang/"><span> 导航</span></a></li><li><a class="site-page child" href="/sm/"><span> 声明</span></a></li><li><a class="site-page child" href="/comments/"><span> 留言</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://pic.chengjingyu.xyz/pic.chengjingyu.xyz/img_win/default_cover_112.webp')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">smile~</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i></a></div><div class="menus_items"><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><span> 休闲</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://pic.chengjingyu.xyz/MUSIC/music.html"><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><span> 照片</span></a></li><li><a class="site-page child" href="/dh/"><span> 动画</span></a></li></ul></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/hl/"><span> 画廊</span></a></li><li><a class="site-page child" href="/movies/"><span> 影院</span></a></li><li><a class="site-page child" href="/game/"><span> 游戏</span></a></li></ul></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/zs/"><span> 自述</span></a></li><li><a class="site-page child" href="/select/"><span> 内心</span></a></li><li><a class="site-page child" href="/random/"><span> 瞎逛</span></a></li></ul></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><span> 网站</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/daohang/"><span> 导航</span></a></li><li><a class="site-page child" href="/sm/"><span> 声明</span></a></li><li><a class="site-page child" href="/comments/"><span> 留言</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">七大算法思想</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2022-11-07T16:00:00.000Z" title="发表于 2022-11-08 00:00:00">2022-11-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="七大算法思想"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout hide-aside" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>算法思想是解决算法问题的核心</p>
+<p>大部分的算法解析思路都来源于七种算法</p>
+<h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>递归算法是一种直接或者间接调用自身函数或者方法的算法</p>
+<p>递归算法的实质是把问题分解成规模缩小的同类问题的子问题</p>
+<p>然后递归调用方法来表示问题的解。</p>
+<h3 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h3><p>主要用于解决：</p>
+<ul>
+<li>数据的定义是按照递归定义的（斐波那契数列 f(n) = f(n-1) + f(n-2)）</li>
+<li>问题的解法按递归实现（回溯）</li>
+<li>数据的结构形式按递归定义（树，图）</li>
+</ul>
+<h3 id="如何解决"><a href="#如何解决" class="headerlink" title="如何解决"></a>如何解决</h3><ul>
+<li>明确输入输出，需要完成什么事情</li>
+<li>寻找递归结束条件，结束递归，返回结果</li>
+<li>明确递归关系式，通过递归组合来解决问题</li>
+</ul>
+<h2 id="分治法"><a href="#分治法" class="headerlink" title="分治法"></a>分治法</h2><p>分治法是将一个复杂的问题</p>
+<p>分成两个或多个相似的子问题</p>
+<p>把子问题分成更小的子问题</p>
+<p>直到更小的子问题可以简单求解</p>
+<p>求解子问题</p>
+<p>则原问题的解则为子问题解的合并</p>
+<h3 id="用途-1"><a href="#用途-1" class="headerlink" title="用途"></a>用途</h3><ul>
+<li>原始问题可以分成多个相似的子问题</li>
+<li>子问题可以很简单的求解</li>
+<li>原始问题的解是子问题解的合并</li>
+<li><p>各个子问题是相互独立的，不包含相同的子问题</p>
+<h3 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h3></li>
+<li><p>分解: 将原问题分解为若干个规模较小，相互独立，与原问题形式相同的子问题</p>
+</li>
+<li>解决: 解决各个子问题</li>
+<li>合并: 将各个子问题的解合并为原问题的解</li>
+</ul>
+<h2 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h2><p>总是做出当前的最优选择</p>
+<p>即期望通过局部的最优选择获得整体的最优选择</p>
+<p>贪心算法仅仅只关注当前的最大利益</p>
+<p>所以说它做出的选择仅仅是某种意义上的局部最优</p>
+<p>但是贪心算法在很多问题上还是能够拿到最优解或较优解</p>
+<p>所以它的存在还是有意义的</p>
+<h3 id="用途-2"><a href="#用途-2" class="headerlink" title="用途"></a>用途</h3><ul>
+<li>原问题复杂度过高</li>
+<li>求全局最优解的数学模型难以建立或计算量过大</li>
+<li>没有太大必要一定要求出全局最优解，“比较优”就可以</li>
+</ul>
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路:"></a>解题思路:</h3><ul>
+<li>明确什么是最优解</li>
+<li>把问题分成多个步骤，每一步都需要满足</li>
+<li>可行性：每一步都满足问题的约束</li>
+<li>局部最优：每一步都做出一个局部最优的选择</li>
+<li>不可取消：选择一旦做出，在后面遇到任何情况都不可取消</li>
+<li>叠加所有步骤的最优解，就是全局最优解</li>
+</ul>
+<h2 id="回溯算法"><a href="#回溯算法" class="headerlink" title="回溯算法"></a>回溯算法</h2><p>回溯算法是一种搜索法，试探法</p>
+<p>它会在每一步做出选择</p>
+<p>一旦发现这个选择无法得到期望结果</p>
+<p>就回溯回去</p>
+<p>重新做出选择</p>
+<h3 id="解题思路-1"><a href="#解题思路-1" class="headerlink" title="解题思路"></a>解题思路</h3><p>针对所给问题</p>
+<p>确定问题的解空间(所有可能的解构成的集合)</p>
+<p>首先应明确定义问题的解空间</p>
+<p>问题的解空间应至少包含问题的一个（最优）解</p>
+<p>把问题的解空间转化为图或者树的结构表示</p>
+<p>确定节点的扩展搜索规则</p>
+<p>使用深度优先搜索策略进行遍历</p>
+<p>在搜索过程中用剪枝函数避免无效搜索</p>
+<p>遍历的过程中记录和寻找所有可行解或者最优解</p>
+<p>​回溯法按深度优先策略搜索问题的解空间树</p>
+<p>首先从根节点出发搜索解空间树</p>
+<p>当算法搜索至解空间树的某一节点时</p>
+<p>先利用剪枝函数判断该节点是否可行（即能得到问题的解）</p>
+<p>如果不可行</p>
+<p>则跳过对该节点为根的子树的搜索</p>
+<p>逐层向其祖先节点回溯</p>
+<p>否则</p>
+<p>进入该子树</p>
+<p>继续按深度优先策略搜索。</p>
+<p>​ 回溯法的基本行为是搜索</p>
+<p>搜索过程使用剪枝函数来为了避免无效的搜索</p>
+<p>剪枝函数包括两类：</p>
+<ol>
+<li>使用约束函数，剪去不满足约束条件的路径<br>2.使用限界函数，剪去不能得到最优解的路径。</li>
+</ol>
+<h3 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h3><p>动态规划也是将复杂问题分解成小问题求解的策略</p>
+<p>与分治算法不同的是</p>
+<p>分治算法要求各子问题是相互独立的</p>
+<p>而动态规划各子问题是相互关联的</p>
+<p>动态规划适用于子问题重叠的情况</p>
+<p>即不同的子问题具有公共的子子问题</p>
+<p>在这种情况下</p>
+<p>分治策略会做出很多不必要的工作</p>
+<p>它会反复求解那些公共子子问题</p>
+<p>而动态规划会对每个子子问题求解一次</p>
+<p>然后保存在表格中</p>
+<p>如果遇到一致的问题</p>
+<p>从表格中获取既可</p>
+<p>所以它无需求解每一个子子问题</p>
+<p>避免了大量的不必要操作</p>
+<h3 id="解题思路-2"><a href="#解题思路-2" class="headerlink" title="解题思路"></a>解题思路</h3><ul>
+<li>定义子问题</li>
+<li>实现需要反复执行解决的子子问题部分</li>
+<li>识别并求解出边界条件</li>
+</ul>
+<h2 id="枚举策略"><a href="#枚举策略" class="headerlink" title="枚举策略"></a>枚举策略</h2><p>枚举算法的思想是</p>
+<p>将问题的所有可能的答案一一列举</p>
+<p>然后根据条件判断此答案是否合适</p>
+<p>保留合适的</p>
+<p>丢弃不合适的</p>
+<h3 id="解题思路-3"><a href="#解题思路-3" class="headerlink" title="解题思路"></a>解题思路</h3><ul>
+<li>确定枚举对象、枚举范围和判定条件。</li>
+<li>逐一列举可能的解，验证每个解是否是问题的解。</li>
+</ul>
+<h2 id="分支限界法"><a href="#分支限界法" class="headerlink" title="分支限界法"></a>分支限界法</h2><p>类似于回溯法</p>
+<p>也是一种在问题的解空间树T上搜索问题解的算法</p>
+<p>但在一般情况下</p>
+<p>分支限界法与回溯法的求解目标不同</p>
+<p>回溯法的求解目标是找出T中满足约束条件的所有解</p>
+<p>而分支限界法的求解目标则是找出满足约束条件的一个解</p>
+<p>或是在满足约束条件的解中找出使某一目标函数值达到极大或极小的解</p>
+<p>即在某种意义下的最优解</p>
+<p>所谓“分支”就是采用广度优先的策略</p>
+<p>依次搜索E-结点的所有分支</p>
+<p>也就是所有相邻结点</p>
+<p>抛弃不满足约束条件的结点</p>
+<p>其余结点加入活结点表</p>
+<p>然后从表中选择一个结点作为下一个E-结点</p>
+<p>继续搜索</p>
+<p>选择下一个结点的方式不同</p>
+<p>则会有几种不同的分支搜索方式</p>
+<ul>
+<li>FIFO搜索（先进先出 队列）</li>
+<li>LIFO搜索 （后进先出 栈）</li>
+</ul>
+<h3 id="解题思路-4"><a href="#解题思路-4" class="headerlink" title="解题思路"></a>解题思路</h3><ul>
+<li>定义解空间 确定解空间包括解的组织形式和显约束(范围限定)</li>
+<li>确定解空间的组织结构 通常用解空间树形象的表达(只是辅助理解并不是真的树)</li>
+<li>搜索解空间 按照广度优先搜索，根据限制条件，搜索问题的解</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>七大算法思想</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a href="https://www.chengjingyu.xyz/2022/11/08/%E4%B8%83%E5%A4%A7%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/">https://www.chengjingyu.xyz/2022/11/08/七大算法思想/</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a"><h>作者</h><div class="post-copyright-cc-info"><h>cjy</h></div></div><div class="post-copyright-c"><h>发布于</h><div class="post-copyright-cc-info"><h>2022-11-08</h></div></div><div class="post-copyright-u"><h>更新于</h><div class="post-copyright-cc-info"><h>2022-11-23</h></div></div><div class="post-copyright-c"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%AE%97%E6%B3%95/">算法</a></div><div class="post_share"><div class="social-share" data-image="https://pic.chengjingyu.xyz/pic.chengjingyu.xyz/img_win/default_cover_112.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 By cjy</div><div class="footer_custom_text">Hope you hava a nice day!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://love.chengjingyu.xyz/',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://love.chengjingyu.xyz/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script defer src="/js/light.js"></script><script async src="//npm.elemecdn.com/pace-js@1.2.4/pace.min.js"></script><canvas id="universe"></canvas><script src="/js/universe.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>
